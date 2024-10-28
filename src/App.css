@@ -1,0 +1,40 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+}
+
+.filter-button {
+  margin-left: 10px; /* Adjust this value as needed */
+}
+
+input[type="text"] {
+  padding: 10px; /* Add padding for better spacing */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  width: 200px; /* Set a fixed width */
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+input[type="text"]:focus {
+  border-color: #556CD6; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
+input[type="text"]::placeholder {
+  color: #aaa; /* Placeholder text color */
+}
