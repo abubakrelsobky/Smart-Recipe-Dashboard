@@ -12,9 +12,9 @@ The following **required** functionality is completed:
 
 - [✓] **The app includes at least one unique chart developed using the fetched data that tell an interesting story**
 - [✓] **Clicking on an item in the list view displays more details about it**
-- [ ] To ensure an accurate grade, your sidebar **must** be viewable when showing the details view in your recording.
+- [✓] Home button appears at the top of the page. In DetialView, it will take you back to the home page.
 - [✓] **Clicking on an item has a direct, unique link to that item's detail view page**
-- [ ] To ensure an accurate grade, the URL/address bar of your web browser **must** be viewable in your recording.  
+- [✓] To ensure an accurate grade, the URL/address bar of your web browser **must** be viewable in your recording.  
 
 The following **optional** features are implemented:
 
