@@ -29,7 +29,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories (Part 1):
 
-<img src='[ https://github.com/abubakrelsobky/data-dashboard-pro/blob/main/Data%20Dashboard%20Pro%20Walkthrough.gif](https://github.com/abubakrelsobky/data-dashboard-pro/blob/main/Data%20Dashboard%20Pro%20Walkthrough.gif)' title='Video Walkthrough Part 1' width='' alt='Video Walkthrough' />
+<img src='https://github.com/abubakrelsobky/data-dashboard-pro/blob/main/Data%20Dashboard%20Pro%20Walkthrough.gif' title='Video Walkthrough Part 1' width='' alt='Video Walkthrough' />
 
 Here's a walkthrough of implemented user stories (Part 2):
 
