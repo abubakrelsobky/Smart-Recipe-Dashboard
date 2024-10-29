@@ -27,9 +27,13 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of implemented user stories (Part 1):
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src=' https://github.com/abubakrelsobky/data-dashboard-pro/blob/main/Data%20Dashboard%20Pro%20Walkthrough.gif' title='Video Walkthrough Part 1' width='' alt='Video Walkthrough' />
+
+Here's a walkthrough of implemented user stories (Part 2):
+
+<img src='https://github.com/abubakrelsobky/data-dashboard-pro/blob/main/Data%20Dashboard%20Pro%20Walkthrough%202.gif' title='Video Walkthrough Part 2' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
@@ -40,7 +44,7 @@ GIF created with ...
 
 ## Notes
 
-The API limit is incredibly low. I have a fully fucntional app. However, I could not even complete a GIF walkthrough because it just hits the daily limit. I suggest removing the spoonacular API from the listed options in future courses and only incldue ones that have reasonable limits.
+The API limit is incredibly low. I have a fully fucntional app. However, I could not even complete a GIF walkthrough because it just hits the daily limit. I suggest removing the spoonacular API from the listed options in future courses and only incldue ones that have reasonable limits. **Update:** I was able to show full fucntionality over 2 GIF files (part 1 and part 2). The address bar of the web browser is shown at the end of the first GIF video as required.
 
 ## License
 
