@@ -29,14 +29,14 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories (Part 1):
 
-<img src=' https://github.com/abubakrelsobky/data-dashboard-pro/blob/main/Data%20Dashboard%20Pro%20Walkthrough.gif' title='Video Walkthrough Part 1' width='' alt='Video Walkthrough' />
+<img src='[ https://github.com/abubakrelsobky/data-dashboard-pro/blob/main/Data%20Dashboard%20Pro%20Walkthrough.gif](https://github.com/abubakrelsobky/data-dashboard-pro/blob/main/Data%20Dashboard%20Pro%20Walkthrough.gif)' title='Video Walkthrough Part 1' width='' alt='Video Walkthrough' />
 
 Here's a walkthrough of implemented user stories (Part 2):
 
 <img src='https://github.com/abubakrelsobky/data-dashboard-pro/blob/main/Data%20Dashboard%20Pro%20Walkthrough%202.gif' title='Video Walkthrough Part 2' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
+GIF created with LICEcap
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
