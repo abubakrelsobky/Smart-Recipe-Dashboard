@@ -6,15 +6,16 @@ export const generateRecipeSummary = async (recipeName, category, cuisine) => {
     cuisine || "international"
   } ${
     category || "dish"
-  }. Keep it under 100 words and make it appetizing with emojis.`;
+  }. Keep it under 100 words and make it appetizing with modest use of emojis.`;
 
+  // Send request to Google Gemini AI API
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
+        contents: [{ parts: [{ text: prompt }] }], // Format required by Gemini API
         generationConfig: { temperature: 0.7, maxOutputTokens: 200 },
       }),
     }
