@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 // No API key needed for TheMealDB!
@@ -17,10 +17,6 @@ const RecipeDetail = () => {
     };
     getRecipeDetail().catch(console.error);
   }, [params.id]);
-
-  // if (!fullDetails) {
-  //     return <div>Loading...</div>;
-  // }
 
   return (
     <div className="whole-page">

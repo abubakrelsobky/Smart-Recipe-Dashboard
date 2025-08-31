@@ -1,19 +1,39 @@
-// Simple AI summary generator using a mock implementation
-// In a real app, this would call an actual AI service like OpenAI, Gemini, etc.
+// AI summary generator using Google Gemini API
+const API_KEY = import.meta.env.VITE_AI_API_KEY;
 
 export const generateRecipeSummary = async (recipeName, category, cuisine) => {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  const prompt = `Generate a brief, engaging summary for this recipe: ${recipeName}. It's a ${
+    cuisine || "international"
+  } ${
+    category || "dish"
+  }. Keep it under 100 words and make it appetizing with emojis.`;
 
-  // Mock AI responses based on recipe characteristics
-  const summaries = [
-    `🍽️ ${recipeName} is a delicious ${cuisine} ${category} dish that's perfect for any occasion. This recipe combines traditional flavors with modern cooking techniques.`,
-    `🌟 A fantastic ${cuisine} recipe! ${recipeName} offers a wonderful balance of flavors and textures, making it a crowd-pleaser for ${category} lovers.`,
-    `🍳 ${recipeName} is an authentic ${cuisine} ${category} dish that brings together fresh ingredients and time-tested cooking methods for an unforgettable meal.`,
-    `🥘 This ${cuisine} ${recipeName} is a perfect example of ${category} cuisine at its finest. Rich in flavor and easy to prepare, it's ideal for both beginners and experienced cooks.`,
-    `🌮 Experience the authentic taste of ${cuisine} cuisine with this ${recipeName} recipe. This ${category} dish offers a delightful culinary journey with every bite.`,
-  ];
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { temperature: 0.7, maxOutputTokens: 200 },
+      }),
+    }
+  );
 
-  // Return a random summary
-  return summaries[Math.floor(Math.random() * summaries.length)];
+  if (!response.ok) {
+    const status = response.status;
+    if (status === 403)
+      throw new Error(
+        "API key authentication failed. Please check your Gemini API key."
+      );
+    if (status === 429)
+      throw new Error("API rate limit exceeded. Please try again in a moment.");
+    throw new Error("Unable to generate AI summary. Please try again later.");
+  }
+
+  const data = await response.json();
+  return (
+    data.candidates?.[0]?.content?.parts?.[0]?.text ||
+    "Unable to generate summary for this recipe."
+  );
 };
