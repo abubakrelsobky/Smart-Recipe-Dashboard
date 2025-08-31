@@ -17,10 +17,10 @@ A modern recipe dashboard that allows users to explore recipes with intelligent 
 - **Detailed Recipe Views**: Complete recipe information with ingredients and instructions
 - **Responsive Design**: Clean, modern UI that works on all devices
 
-### Enhanced Experience
+### AI-Enhanced Experience 🧠
 
-- **Smart Recipe Summaries**: Get engaging recipe summaries with one click
-- **Instant Analysis**: Quickly understand what makes each recipe special
+- **Smart Recipe Summaries**: Get AI-generated recipe summaries powered by Google Gemini
+- **One-Click Analysis**: Instantly understand what makes each recipe special
 
 ## ⚙️ Technology Stack
 
