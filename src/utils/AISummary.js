@@ -1,5 +1,5 @@
 // AI summary generator using Google Gemini API
-const API_KEY = import.meta.env.VITE_AI_API_KEY;
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 export const generateRecipeSummary = async (recipeName, category, cuisine) => {
   const prompt = `Generate a brief, engaging summary for this recipe: ${recipeName}. It's a ${
