@@ -24,7 +24,7 @@ const RecipeDetail = () => {
         <>
           <h1>{fullDetails.strMeal}</h1>
           <img
-            className="recipe-detail img"
+            className="recipe-detail-img"
             src={fullDetails.strMealThumb}
             alt={`Recipe image`}
             loading="lazy"
