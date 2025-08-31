@@ -1,79 +1,100 @@
 import React, { Component, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-const API_KEY = import.meta.env.VITE_APP_API_KEY;
+
+// No API key needed for TheMealDB!
 
 const RecipeDetail = () => {
-    let params = useParams();
-    const [fullDetails, setFullDetails] = useState(null);
+  let params = useParams();
+  const [fullDetails, setFullDetails] = useState(null);
 
-    useEffect(() => {
-        const getRecipeDetail = async () => {
-            const details = await fetch(`https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${API_KEY}`);
-            const detailsJson = await details.json();
-            setFullDetails(detailsJson);
-        };
-        getRecipeDetail().catch(console.error);
-    }, [params.id]);
+  useEffect(() => {
+    const getRecipeDetail = async () => {
+      const details = await fetch(
+        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`
+      );
+      const detailsJson = await details.json();
+      setFullDetails(detailsJson.meals ? detailsJson.meals[0] : null);
+    };
+    getRecipeDetail().catch(console.error);
+  }, [params.id]);
 
-    // if (!fullDetails) {
-    //     return <div>Loading...</div>;
-    // }
+  // if (!fullDetails) {
+  //     return <div>Loading...</div>;
+  // }
 
-    return (
-        <div className="whole-page">
-            {fullDetails ?
-                <>
-                    <h1>{fullDetails.title}</h1>
-                    <img
-                        className="images"
-                        src={fullDetails.image}
-                        alt={`Recipe image`}
-                    />
-                    <br />
-                    <br />
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Cooking Time</th>
-                                <td>{fullDetails.cookingMinutes || 'N/A'}</td>
-                            </tr>
-                            <tr>
-                                <th>Servings</th>
-                                <td>{fullDetails.servings || 'N/A'}</td>
-                            </tr>
-                            <tr>
-                                <th>Health Score</th>
-                                <td>{fullDetails.healthScore || 'N/A'}</td>
-                            </tr>
-                            <tr>
-                                <th>DairyFree</th>
-                                <td>{fullDetails.dairyFree || 'N/A'}</td>
-                            </tr>
-                            <tr>
-                                <th>Spoonacular Website Info</th>
-                                <td>{fullDetails.spoonacularSourceUrl ? <a href={fullDetails.spoonacularSourceUrl} target="_blank" rel="noopener noreferrer">Recipe Webpage</a> : 'N/A'}</td>
-                            </tr>
-                            <tr>
-                                <th>Gluten Free</th>
-                                <td>{fullDetails.glutenFree || 'N/A'}</td>
-                            </tr>
-                            <tr>
-                                <th>Vegan</th>
-                                <td>{fullDetails.vegan || 'N/A'}</td>
-                            </tr>
-                            <tr>
-                                <th>Dish Types</th>
-                                <td>{fullDetails.dishTypes || 'N/A'}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </>
-                : <p>Still Loading</p>
-            }
+  return (
+    <div className="whole-page">
+      {fullDetails ? (
+        <>
+          <h1>{fullDetails.strMeal}</h1>
+          <img
+            className="recipe-detail img"
+            src={fullDetails.strMealThumb}
+            alt={`Recipe image`}
+            loading="lazy"
+          />
+          <br />
+          <br />
+          <table>
+            <tbody>
+              <tr>
+                <th>Category</th>
+                <td>{fullDetails.strCategory || "N/A"}</td>
+              </tr>
+              <tr>
+                <th>Cuisine</th>
+                <td>{fullDetails.strArea || "N/A"}</td>
+              </tr>
+              <tr>
+                <th>Instructions</th>
+                <td style={{ maxWidth: "500px", textAlign: "left" }}>
+                  {fullDetails.strInstructions || "N/A"}
+                </td>
+              </tr>
+              <tr>
+                <th>YouTube Video</th>
+                <td>
+                  {fullDetails.strYoutube ? (
+                    <a
+                      href={fullDetails.strYoutube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Watch Recipe Video
+                    </a>
+                  ) : (
+                    "N/A"
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <th>Source</th>
+                <td>
+                  {fullDetails.strSource ? (
+                    <a
+                      href={fullDetails.strSource}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Original Recipe
+                    </a>
+                  ) : (
+                    "N/A"
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <th>Tags</th>
+                <td>{fullDetails.strTags || "N/A"}</td>
+              </tr>
+            </tbody>
+          </table>
+        </>
+      ) : (
+        <p>Still Loading</p>
+      )}
+    </div>
+  );
+};
 
-
-        </div>
-    );
-}
-
-export default RecipeDetail
+export default RecipeDetail;
