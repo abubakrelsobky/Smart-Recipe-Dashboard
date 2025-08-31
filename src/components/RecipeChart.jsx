@@ -27,13 +27,68 @@ const RecipeChart = ({ recipes }) => {
   };
 
   useEffect(() => {
-    if (recipes && recipes.length > 0) {
-      const data = recipes.map((recipe) => ({
-        id: recipe.idMeal,
-        ingredientCount: countIngredients(recipe),
-      }));
-      setChartData(data);
-    }
+    console.log("RecipeChart received recipes:", recipes);
+
+    const fetchRecipeDetails = async () => {
+      if (recipes && recipes.length > 0) {
+        // Check if recipes have ingredient data
+        const hasIngredients = recipes[0].strIngredient1 !== undefined;
+
+        if (!hasIngredients) {
+          console.log(
+            "Recipes missing ingredient data, fetching full details..."
+          );
+          // Fetch full details for each recipe
+          const detailedRecipes = await Promise.all(
+            recipes.map(async (recipe) => {
+              try {
+                const response = await fetch(
+                  `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}`
+                );
+                const json = await response.json();
+                return json.meals ? json.meals[0] : recipe;
+              } catch (error) {
+                console.error(
+                  `Failed to fetch details for recipe ${recipe.idMeal}:`,
+                  error
+                );
+                return recipe;
+              }
+            })
+          );
+
+          const data = detailedRecipes.map((recipe) => {
+            const count = countIngredients(recipe);
+            console.log(
+              `Recipe ${recipe.idMeal} (${recipe.strMeal}): ${count} ingredients`
+            );
+            return {
+              id: recipe.idMeal,
+              ingredientCount: count,
+            };
+          });
+
+          console.log("Chart data with full details:", data);
+          setChartData(data);
+        } else {
+          // Recipes already have ingredient data
+          const data = recipes.map((recipe) => {
+            const count = countIngredients(recipe);
+            console.log(
+              `Recipe ${recipe.idMeal} (${recipe.strMeal}): ${count} ingredients`
+            );
+            return {
+              id: recipe.idMeal,
+              ingredientCount: count,
+            };
+          });
+          console.log("Chart data:", data);
+          setChartData(data);
+        }
+      }
+    };
+
+    fetchRecipeDetails();
   }, [recipes]);
 
   return (

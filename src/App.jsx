@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import { Link } from "react-router-dom";
 import RecipeChart from "./components/RecipeChart";
 import RecipeCard from "./components/RecipeCard";
 
@@ -67,12 +68,10 @@ function App() {
 
       // Find intersection of all filter results
       if (filterResults.length > 0) {
-        allResults = filterResults[0].filter((meal1) =>
-          filterResults
-            .slice(1)
-            .every((filterResult) =>
-              filterResult.some((meal2) => meal1.idMeal === meal2.idMeal)
-            )
+        allResults = filterResults[0].filter((meal) =>
+          filterResults.every((results) =>
+            results.some((result) => result.idMeal === meal.idMeal)
+          )
         );
       }
 
@@ -89,13 +88,13 @@ function App() {
       }
       return;
     } else if (filters.searchInput && filters.searchInput.trim() !== "") {
-      // Only search, no filters
+      // Only search, no other filters - use search API
       url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(
         filters.searchInput
       )}`;
     } else {
-      // No filters and no search - fetch all or default meals
-      url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+      // No filters - show default chicken recipes
+      url = `https://www.themealdb.com/api/json/v1/1/search.php?s=chicken`;
     }
 
     if (url) {
@@ -139,11 +138,6 @@ function App() {
     </button>
   );
 
-  // Extract recipe data for chart
-  const getRecipeData = () => {
-    return filteredResults.length > 0 ? filteredResults : [];
-  };
-
   return (
     <div className="whole-page">
       <h1>Recipe Dashboard (TheMealDB)</h1>
@@ -184,7 +178,7 @@ function App() {
           ? `Total Number of Results: ${filteredResults.length}`
           : "No Results Found"}
       </p>
-      <RecipeChart recipes={getRecipeData()} />
+      <RecipeChart recipes={filteredResults} />
     </div>
   );
 }
