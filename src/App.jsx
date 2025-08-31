@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { Link } from "react-router-dom";
 import RecipeChart from "./components/RecipeChart";
+import RecipeCard from "./components/RecipeCard";
 
 // No API key needed for TheMealDB!
 
@@ -174,18 +175,7 @@ function App() {
 
       <ul className="recipe-list">
         {(filteredResults.length > 0 ? filteredResults : []).map((recipe) => (
-          <li key={recipe.idMeal} className="recipe-card">
-            <Link to={`/recipeDetail/${recipe.idMeal}`}>
-              <p>
-                {recipe.strMeal} <span>({recipe.idMeal})</span>
-              </p>
-              <img
-                src={recipe.strMealThumb}
-                alt={recipe.strMeal}
-                loading="lazy"
-              />
-            </Link>
-          </li>
+          <RecipeCard key={recipe.idMeal} recipe={recipe} />
         ))}
       </ul>
 
