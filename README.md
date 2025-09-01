@@ -13,7 +13,7 @@ A modern recipe dashboard that allows users to explore recipes with intelligent 
 ### Core Functionality
 
 - **Multi-Filter Search**: Filter recipes by category, area, and ingredients
-- **Interactive Charts**: Visual cooking time analysis using Recharts
+- **Interactive Charts**: Visual ingredient comlexity analysis using Recharts
 - **Detailed Recipe Views**: Complete recipe information with ingredients and instructions
 - **Responsive Design**: Clean, modern UI that works on all devices
 
